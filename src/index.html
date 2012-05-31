@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+  <h1>{{ total_cost|escape }} USD have been saved by sharing neuroimaging data!</h1>
+  <table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Authors</th>
+    <th>Database</th>
+    <th>Number of subject</th>
+    <th>Estimated cost</th>
+    <th>Added by</th>
+    <th>Edit</th>
+
+    {% for paper in papers %}
+  <tr>
+      <td><a href="{{ paper.url|escape }}">{{ paper.title|escape }}</a></td>
+      <td>{{ paper.authors|escape }}</td>
+      <td><a href="{{ paper.dataset_url|escape }}">{{ paper.dataset|escape }}</a></td>
+      <td>{{ paper.n_subjects|escape }}</td>
+      <td>{{ paper.potential_cost|escape }}</td>
+      <td>{% if paper.added_by %}{{ paper.added_by.nickname()|escape }}{% endif %}</td>
+      <td><a href="add_paper?key_name={{ paper.key().name() }}">Edit</a></td>
+   </tr>
+    {% endfor %}
+</table>
+
+    <a href="add_paper">Add paper</a>
+
+  </body>
+</html>

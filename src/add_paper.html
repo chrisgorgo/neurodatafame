@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+    <form action="/add_paper" method="post">
+    <table>
+      {{ form }}
+    </table>
+    {% if edit_menu %}
+    <input type="submit" value="Edit Paper"> <input name="delete" type="submit" value="Remove Paper">
+    {% else %}
+    <input type="submit" value="Add Paper">
+    {% endif %}
+    </form>
+  </body>
+</html>
